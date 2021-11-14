@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="CommunicationWithNeurons\CreateNeurals.cs" />
     <Compile Include="CommunicationWithNeurons\DrawingNeurons.cs" />
+    <Compile Include="CommunicationWithNeurons\MovementOfNeurons.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

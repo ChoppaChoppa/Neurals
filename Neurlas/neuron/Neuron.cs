@@ -10,29 +10,39 @@ namespace Neurlas.neuron
     class Neuron
     {
         public float X { get; }
-        public float Y { get; }
+        public float Y { get; }   
         public float Width { get; }
         public float Height { get; }
-        public Color BackColor = Color.FromArgb(3, 83, 164);
+
+        public PointF Point { get; }
+        public SizeF Size { get; }
+
+        public Color BackColor = Color.FromArgb(4, 102, 200);
 
         public RectangleF recNeuron { get; private set; }
 
-        public Neuron(int x, int y)
+        public Neuron(int x, int y, int W, int H)
         {
             X = x;
             Y = y;
-            Width = 10.0f;
-            Height = 10.0f;
+            Width = W;
+            Height = H;
+
+            Point = new PointF(X, Y);
+            Size = new SizeF(Width, Height);
 
             recNeuron = new RectangleF(X, Y, Width, Height);
         }
 
-        public Neuron(PointF location)
+        public Neuron(PointF location, SizeF size)
         {
             X = location.X;
             Y = location.Y;
-            Width = 10.0f;
-            Height = 10.0f;
+            Width = size.Width;
+            Height = size.Height;
+
+            Point = new PointF(X, Y);
+            Size = new SizeF(Width, Height);
 
             recNeuron = new RectangleF(X, Y, Width, Height);
         }

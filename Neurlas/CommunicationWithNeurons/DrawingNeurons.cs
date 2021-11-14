@@ -11,16 +11,16 @@ namespace Neurlas.CommunicationWithNeurons
 {
     class DrawingNeurons
     {
-        private Neuron _neuron;
 
-        public DrawingNeurons(Neuron neuron)
+        public DrawingNeurons()
         {
-            _neuron = neuron;
+
         }
 
-        public void Draw(Graphics g)
+        public void DrawCollection(Graphics g, List<Neuron> neurons)
         {
-            g.DrawRectangle(new Pen(_neuron.BackColor), _neuron.recNeuron.X, _neuron.recNeuron.Y, _neuron.recNeuron.Width, _neuron.recNeuron.Height);
+            foreach(var _neuron in neurons)
+                g.FillEllipse(new SolidBrush(_neuron.BackColor), _neuron.recNeuron.X, _neuron.recNeuron.Y, _neuron.recNeuron.Width, _neuron.recNeuron.Height);
         }
     }
 }
