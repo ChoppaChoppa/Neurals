@@ -28,7 +28,7 @@ namespace Neurlas.neuron
             Width = W;
             Height = H;
 
-            Point = new PointF(X, Y);
+            Point = new PointF(X + Width / 2, Y + Height / 2);
             Size = new SizeF(Width, Height);
 
             recNeuron = new RectangleF(X, Y, Width, Height);
@@ -41,7 +41,7 @@ namespace Neurlas.neuron
             Width = size.Width;
             Height = size.Height;
 
-            Point = new PointF(X, Y);
+            Point = new PointF(X + Width / 2, Y + Height / 2);
             Size = new SizeF(Width, Height);
 
             recNeuron = new RectangleF(X, Y, Width, Height);

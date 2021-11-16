@@ -16,6 +16,8 @@ namespace Neurlas
     {
         DrawingNeurons draw;
         MovementOfNeurons movementOfNeurons;
+        CreateNeuronsLines neuronLines;
+        DrawingNeuronsLines drawNeuronLines;
 
         List<Neuron> neuronsCollection;
 
@@ -35,6 +37,8 @@ namespace Neurlas
 
             draw = new DrawingNeurons();
             movementOfNeurons = new MovementOfNeurons();
+            neuronLines = new CreateNeuronsLines();
+            drawNeuronLines = new DrawingNeuronsLines();
             //neuronsCollection = new List<Neuron>();
         }
 
@@ -45,6 +49,11 @@ namespace Neurlas
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             g.Clear(this.BackColor);
+
+            PointF centerPoint = new PointF(newMouseLocationX, newMouseLocationY);
+
+            foreach (var point in neuronLines.linesPoint)
+                drawNeuronLines.Draw(g, point.Point, centerPoint);
 
             draw.DrawCollection(g, neuronsCollection);
         }
@@ -65,11 +74,13 @@ namespace Neurlas
             newMouseLocationX = e.X;
             newMouseLocationY = e.Y;
 
-            var point = movementOfNeurons.DirectionSide(oldMouseLocationX, oldMouseLocationY, newMouseLocationX, newMouseLocationY);
-            movementOfNeurons.Moving(ref neuronsCollection, point.X, point.Y);
+            //var point = movementOfNeurons.DirectionSide(oldMouseLocationX, oldMouseLocationY, newMouseLocationX, newMouseLocationY);
+            //movementOfNeurons.Moving(ref neuronsCollection, point.X, point.Y);
 
             oldMouseLocationX = newMouseLocationX;
             oldMouseLocationY = newMouseLocationY;
+
+            neuronLines.Create(newMouseLocationX, newMouseLocationY, neuronsCollection);
 
             Invalidate();
         }
